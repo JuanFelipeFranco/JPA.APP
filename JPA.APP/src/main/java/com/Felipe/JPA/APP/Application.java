@@ -26,8 +26,20 @@ public class Application implements CommandLineRunner {
 	@Override //va correr en consola.
 	public void run(String... args) throws Exception {
 //		findOne();
-//		create();
-		update();
+		create();
+//		update();
+//		delete();
+	}
+	@Transactional
+	public void delete() {
+		personRepository.findAll().forEach(System.out::println);
+
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Ingrese id de la persona: ");
+		Long id = scanner.nextLong();
+		personRepository.deleteById(id);
+
+		personRepository.findAll().forEach(System.out::println);
 	}
 	@Transactional
 	public void update(){
