@@ -23,7 +23,13 @@ public class Application implements CommandLineRunner {
 
 	@Override //va correr en consola.
 	public void run(String... args) throws Exception {
-		findOne();
+//		findOne();
+		create();
+	}
+	public void create(){
+		Person person = new Person(null,"Juan","Franco","Java");
+		Person personNew = personRepository.save(person);
+		System.out.println(personNew);
 	}
 	public void findOne(){
 		//primer manera
