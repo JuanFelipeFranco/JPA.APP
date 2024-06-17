@@ -26,5 +26,13 @@ public class Application implements CommandLineRunner {
 
 		List<Person> persons = (List<Person>) personRepository.findByProgrammingLanguageAndName("Java","Andres");
 		persons.stream().forEach(person -> {System.out.println(person);});
+
+/*		List <Object[]> personValues = personRepository.obtenerPersonData("Python","Pepe");
+		personValues.stream().forEach(person -> {System.out.println(person[0] + " ES EXPERTO EN "+person[1]);});*/
+
+		List <Object[]> personValues = personRepository.obtenerPersonData("Python","Pepe");
+		personValues.stream().forEach(person -> {System.out.println(person[0] + " ES EXPERTO EN "+person[1]);});
+
+
 	}
 }
