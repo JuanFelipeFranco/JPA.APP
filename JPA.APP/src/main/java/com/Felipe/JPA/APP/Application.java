@@ -41,6 +41,15 @@ public class Application implements CommandLineRunner {
 		//3manera
 		personRepository.findById(8L).ifPresent(person -> System.out.println(person));
 
+		personRepository.findOne(1L).ifPresent(System.out::println);
+
+		personRepository.findOneName("Pepe").ifPresent(System.out::println);
+
+		personRepository.findOneLikeName("ri").ifPresent(System.out::println);
+
+		personRepository.findByNameContaining("se").ifPresent(System.out::println);
+
+
 	}
 	public void list(){
 //		List<Person> persons = (List<Person>) personRepository.findAll();
