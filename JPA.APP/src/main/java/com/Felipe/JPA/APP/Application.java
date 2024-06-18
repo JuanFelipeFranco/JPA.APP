@@ -28,7 +28,22 @@ public class Application implements CommandLineRunner {
 //		findOne();
 		create();
 //		update();
-//		delete();
+//		delete2();
+	}
+	@Transactional
+	public void delete2() {
+		personRepository.findAll().forEach(System.out::println);
+
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Ingrese id de la persona: ");
+		Long id = scanner.nextLong();
+		Optional<Person> optionalPerson = personRepository.findById(id);
+
+		optionalPerson.ifPresentOrElse(person -> personRepository.delete(person),()-> System.out.println("Lo sentimos no existe la persona con ese id"));
+
+		personRepository.findAll().forEach(System.out::println);
+
+		scanner.close();
 	}
 	@Transactional
 	public void delete() {
