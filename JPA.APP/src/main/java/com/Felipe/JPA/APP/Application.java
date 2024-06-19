@@ -26,9 +26,30 @@ public class Application implements CommandLineRunner {
 	@Override //va correr en consola.
 	public void run(String... args) throws Exception {
 //		findOne();
-		create();
+//		create();
 //		update();
 //		delete2();
+		personalizeQueries();
+	}
+
+	@Transactional(readOnly = true)
+	public void personalizeQueries(){
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("========== consulta solo el nombre por el id: ========== ");
+		System.out.println("ingrese id para el nombre de persona: ");
+
+		Long id = scanner.nextLong();
+		scanner.close();
+
+		String name = personRepository.getNameById(id);
+		System.out.println(name);
+
+		Long idDb = personRepository.getIdById(id);
+		System.out.println(idDb);
+
+		String fullname = personRepository.getFullById(id);
+		System.out.println(fullname);
+
 	}
 	@Transactional
 	public void delete2() {

@@ -8,6 +8,14 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PersonRepository extends CrudRepository<Person, Long> {
+    @Query("select p.name from Person p where p.id=?1")
+    String getNameById(Long id);
+
+    @Query("select p.id from Person p where p.id=?1")
+    Long getIdById(Long id);
+
+    @Query("select concat(p.name,' ',p.lastname) as fullname from Person p where p.id=?1")
+    String getFullById(Long id);
 
     @Query("select p from Person p where p.id=?1")
     Optional<Person> findOne(Long id);
@@ -29,7 +37,11 @@ public interface PersonRepository extends CrudRepository<Person, Long> {
     List<Person> findByProgrammingLanguageAndName(String programmingLanguage, String name);
 
     @Query("select p.name, p.programmingLanguage from Person p")
-    List <Object[]> obtenerPersonData();
+    List <Object[]> obtenerPersonDataList ();
+
+    @Query("select p.id,p.name,p.lastname,p.programmingLanguage from Person p")
+    Object[] obtenerPersonDataFullById(Long id);
+
     @Query("select p.name, p.programmingLanguage from Person p where p.name=?1")
     List <Object[]> obtenerPersonData(String name);
 
