@@ -29,9 +29,9 @@ public class Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 //		findOne();
 //		create();
-//		update();
+		update();
 //		delete2();
-		subQueries();
+//		subQueries();
 	}
 
 	@Transactional(readOnly = true)
